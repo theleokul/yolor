@@ -65,6 +65,11 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=None):
         cv2.putText(img, label, (c1[0], c1[1] - 2), 0, tl / 3, [225, 255, 255], thickness=tf, lineType=cv2.LINE_AA)
 
 
+def crop_one_box(x, img):
+    c1, c2 = (int(x[0]), int(x[1])), (int(x[2]), int(x[3]))
+    return img[c1[1]: c2[1], c1[0]: c2[0], :]
+
+
 def plot_wh_methods():  # from utils.general import *; plot_wh_methods()
     # Compares the two methods for width-height anchor multiplication
     # https://github.com/ultralytics/yolov3/issues/168
